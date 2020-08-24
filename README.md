@@ -1,6 +1,6 @@
 # Kotlin Stdlib API in Typescript
 WIP
-* [ ] contains
+* [x] contains
 * [ ] elementAt
 * [ ] elementAtOrElse
 * [ ] elementAtOrNull
@@ -110,7 +110,7 @@ WIP
 * [ ] joinToString
 * [ ] average
 * [ ] sum
-* [ ] containsAll
+* [x] containsAll
 * [ ] get
 * [ ] isEmpty
 * [ ] iterator

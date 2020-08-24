@@ -2,6 +2,7 @@ import injectDistinct, { KtListDistinctOp } from './collections/distinct'
 import injectFilter, { KtListFilterOp } from './collections/filter'
 import injectForEach, { KtListForEachOp } from './collections/forEach'
 import injectSize, { KtListSizeOp } from './collections/size'
+import injectContains, { KtListContainsOp } from './collections/contains'
 
 declare global {
   interface Array<T> extends KtListOp<T>, TsListOp<T> {}
@@ -26,9 +27,8 @@ export interface KtListOp<T>
   extends KtListDistinctOp<T>,
     KtListFilterOp<T>,
     KtListForEachOp<T>,
-    KtListSizeOp {
-  contains(element: T): boolean
-
+    KtListSizeOp,
+    KtListContainsOp<T> {
   elementAt(index: number): T
 
   elementAtOrElse(index: number, defaultValue: (index: number) => T): T
@@ -256,12 +256,6 @@ export interface KtListOp<T>
   sum(): number
 
   /**
-   * Checks if all elements in the specified collection are contained in this collection.
-   * @param elements
-   */
-  containsAll(elements: T[]): boolean
-
-  /**
    * Returns the element at the specified index in the list.
    * @param index
    */
@@ -289,4 +283,5 @@ export function arrayOf<T = any>(...items: T[]): Array<T> {
   injectFilter(Array.prototype)
   injectForEach(Array.prototype)
   injectSize(Array.prototype)
+  injectContains(Array.prototype)
 })()
