@@ -1,14 +1,20 @@
 {
   "name": "kt.ts",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.3",
   "description": "Porting Kotlin stdlib api to typescript",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
     "build": "tsc",
     "build:check": "tsc --noEmit",
+    "release": "rm -rf dist && npm run build",
     "lint-fix": "eslint 'src/**/*.{js,ts,tsx}' --quiet --fix && prettier --config .prettierrc --write 'src/**/*.{tsx,ts}'",
     "test": "jest"
   },
