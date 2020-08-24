@@ -1,7 +1,10 @@
-import { filter, uniq, uniqBy } from 'lodash'
+import injectDistinct, { KtListDistinctOp } from './collections/distinct'
+import injectFilter, { KtListFilterOp } from './collections/filter'
+import injectForEach, { KtListForEachOp } from './collections/forEach'
+import injectSize, { KtListSizeOp } from './collections/size'
 
 declare global {
-  interface Array<T> extends KtListOp<T> {}
+  interface Array<T> extends KtListOp<T>, TsListOp<T> {}
 }
 
 interface Pair<K, V> {
@@ -19,9 +22,11 @@ interface IndexedValue<R> {
   todo: R
 }
 
-export interface KtListOp<T> {
-  size: number
-
+export interface KtListOp<T>
+  extends KtListDistinctOp<T>,
+    KtListFilterOp<T>,
+    KtListForEachOp<T>,
+    KtListSizeOp {
   contains(element: T): boolean
 
   elementAt(index: number): T
@@ -76,14 +81,6 @@ export interface KtListOp<T> {
 
   dropWhile(predicate: (value: T) => boolean): T[]
 
-  filter(predicate: (value: T) => boolean): T[]
-
-  filterIndexed(predicate: (index: number, value: T) => boolean): T[]
-
-  filterNot(predicate: (value: T) => boolean): T[]
-
-  filterNotNull(): Array<NonNullable<T>>
-
   slice(indices: number[] /*IntRange*/): T[]
 
   take(n: number): T[]
@@ -135,10 +132,6 @@ export interface KtListOp<T> {
   mapNotNull<R>(transform: (value: T) => R | null): R[]
 
   withIndex(): Iterable<IndexedValue<T>>
-
-  distinct(): T[]
-
-  distinctBy<K>(selector: (value: T) => K): T[]
 
   intersect(other: Iterable<T>): Set<T>
 
@@ -256,7 +249,7 @@ export interface KtListOp<T> {
     limit: number,
     truncated: string,
     transform?: (value: T) => string,
-  ): String
+  ): string
 
   average(): number
 
@@ -278,48 +271,22 @@ export interface KtListOp<T> {
 
   iterator(): Iterator<T>
 
-  lastIndexOf(element: T): number
-
   subList(fromIndex: number, toIndex: number): T[]
 
   lastIndex: number
+}
 
-  // extra
+interface TsListOp<T> {
   filterNotEmpty(): Array<NonNullable<T>>
-}
-
-Object.defineProperty(Array.prototype, 'size', {
-  get: function () {
-    return this.length
-  },
-})
-
-Array.prototype.filterNot = function <T>(predicate: (value: T) => boolean): T[] {
-  return filter(this, value => !predicate(value))
-}
-
-Array.prototype.filterNotNull = function <T>(): Array<NonNullable<T>> {
-  return filter(this, value => value !== null && value !== undefined)
-}
-
-Array.prototype.forEachIndexed = function <T>(action: (value: T, index: number) => void): void {
-  return this.forEach(action)
-}
-
-Array.prototype.distinct = function <T>(): T[] {
-  return uniq(this)
-}
-
-Array.prototype.distinctBy = function <T, R>(selector: (value: T) => R) {
-  return uniqBy(this, selector)
-}
-
-Array.prototype.filterNotEmpty = function <T extends string | null | undefined>(): Array<
-  NonNullable<T>
-> {
-  return filter(this, value => value !== null && value !== undefined && value !== '')
 }
 
 export function arrayOf<T = any>(...items: T[]): Array<T> {
   return items
 }
+
+;(() => {
+  injectDistinct(Array.prototype)
+  injectFilter(Array.prototype)
+  injectForEach(Array.prototype)
+  injectSize(Array.prototype)
+})()

@@ -17,9 +17,3 @@ describe('map', () => {
     expect([1, 2, 3].map(numberToString)).toStrictEqual(['1', '2', '3'])
   })
 })
-
-describe('distinct', () => {
-  test('distinct', () => {
-    expect([1, 1, 2, 2, 3].distinct()).toStrictEqual([1, 2, 3])
-  })
-})

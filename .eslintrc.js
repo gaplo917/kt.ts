@@ -18,6 +18,7 @@ module.exports = {
   rules: {
     '@typescript-eslint/no-empty-function': 0,
     '@typescript-eslint/no-empty-interface': 0,
+    '@typescript-eslint/no-explicit-any': 0,
     '@typescript-eslint/no-non-null-assertion': 0,
     '@typescript-eslint/explicit-module-boundary-types': 0,
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
