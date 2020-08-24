@@ -1,10 +1,12 @@
 # Kotlin Stdlib API in Typescript
 WIP
+
+### Kotlin List API
 * [x] contains
 * [ ] elementAt
 * [ ] elementAtOrElse
 * [ ] elementAtOrNull
-* [ ] find
+* [] ~~find~~
 * [ ] findLast
 * [ ] first
 * [ ] first
@@ -27,10 +29,10 @@ WIP
 * [ ] dropLast
 * [ ] dropLastWhile
 * [ ] dropWhile
-* [ ] filter
-* [ ] filterIndexed
-* [ ] filterNot
-* [ ] filterNotNull
+* [] ~~filter~~
+* [x] filterIndexed
+* [x] filterNot
+* [x] filterNotNull
 * [ ] slice
 * [ ] take
 * [ ] takeLast
@@ -57,8 +59,8 @@ WIP
 * [ ] mapIndexedNotNull
 * [ ] mapNotNull
 * [ ] withIndex
-* [ ] distinct
-* [ ] distinctBy
+* [x] distinct
+* [x] distinctBy
 * [ ] intersect
 * [ ] subtract
 * [ ] union
@@ -71,8 +73,8 @@ WIP
 * [ ] foldIndexed
 * [ ] foldRight
 * [ ] foldRightIndexed
-* [ ] forEach
-* [ ] forEachIndexed
+* [] ~~forEach~~
+* [x] forEachIndexed
 * [ ] max
 * [ ] maxBy
 * [ ] maxWith
@@ -114,8 +116,9 @@ WIP
 * [ ] get
 * [ ] isEmpty
 * [ ] iterator
-* [ ] lastIndexOf
 * [ ] subList
-* [ ] filterNotEmpty
-* [ ] size
+* [x] size
 * [ ] lastIndex
+
+### Extra for TS and Kotlin-Like API
+* [x] filterNotEmpty
