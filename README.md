@@ -6,7 +6,7 @@ WIP
 * [ ] elementAt
 * [ ] elementAtOrElse
 * [ ] elementAtOrNull
-* [] ~~find~~
+* [x] ~~find~~
 * [ ] findLast
 * [ ] first
 * [ ] first
@@ -29,7 +29,7 @@ WIP
 * [ ] dropLast
 * [ ] dropLastWhile
 * [ ] dropWhile
-* [] ~~filter~~
+* [x] ~~filter~~
 * [x] filterIndexed
 * [x] filterNot
 * [x] filterNotNull
@@ -73,7 +73,7 @@ WIP
 * [ ] foldIndexed
 * [ ] foldRight
 * [ ] foldRightIndexed
-* [] ~~forEach~~
+* [x] ~~forEach~~
 * [x] forEachIndexed
 * [ ] max
 * [ ] maxBy
