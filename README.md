@@ -8,9 +8,10 @@ WIP
 * [x] elementAtOrNull
 * [x] ~~find~~
 * [x] findLast
-* [ ] first
-* [ ] first
-* [ ] firstOrNull
+* [x] first
+* [x] first
+* [x] firstOrNull
+* [x] firstOrNull
 * [ ] getOrElse
 * [ ] getOrNull
 * [ ] indexOf
