@@ -39,11 +39,11 @@ describe('first', () => {
   test('firstOrNull', () => {
     expect([1, 1, 2, 2, 3].first()).toBe(1)
     expect(['100', 2].first()).toBe('100')
-    expect([].firstOrNull()).toBe(null)
+    expect([].firstOrNull()).toBeNull()
   })
 
   test('firstOrNull in empty array', () => {
-    expect([].firstOrNull()).toBe(null)
+    expect([].firstOrNull()).toBeNull()
   })
 
   test('firstOrNull with predicate', () => {
@@ -59,6 +59,6 @@ describe('first', () => {
   })
 
   test('firstOrNull with predicate not found', () => {
-    expect(users.firstOrNull(value => value.name === 'Tony')).toBe(null)
+    expect(users.firstOrNull(value => value.name === 'Tony')).toBeNull()
   })
 })

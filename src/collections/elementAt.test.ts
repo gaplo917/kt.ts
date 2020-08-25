@@ -32,11 +32,11 @@ describe('elementAt', () => {
     const arr = [1, 2, 3]
 
     expect(arr.elementAtOrNull(0)).toBe(1)
-    expect(arr.elementAtOrNull(4)).toBe(null)
+    expect(arr.elementAtOrNull(4)).toBeNull()
   })
 
   test('elementAtOrNull if empty', () => {
-    expect((<number[]>[]).elementAtOrNull(0)).toBe(null)
-    expect((<number[]>[]).elementAtOrNull(1000)).toBe(null)
+    expect((<number[]>[]).elementAtOrNull(0)).toBeNull()
+    expect((<number[]>[]).elementAtOrNull(1000)).toBeNull()
   })
 })

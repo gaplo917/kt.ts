@@ -6,6 +6,7 @@ import injectContains, { KtListContainsOp } from './collections/contains'
 import injectElementAt, { KtListElementAtOp } from './collections/elementAt'
 import injectFind, { KtListFindOp } from './collections/find'
 import injectFirst, { KtListFirstOp } from './collections/first'
+import injectFilterExtra, { TsListFilterOp } from './extras/filter-extra'
 
 declare global {
   interface Array<T> extends KtListOp<T>, TsListOp<T> {}
@@ -25,6 +26,8 @@ interface IndexedValue<R> {
   // TODO
   todo: R
 }
+
+export interface TsListOp<T> extends TsListFilterOp<T> {}
 
 export interface KtListOp<T>
   extends KtListDistinctOp<T>,
@@ -260,10 +263,6 @@ export interface KtListOp<T>
   lastIndex: number
 }
 
-interface TsListOp<T> {
-  filterNotEmpty(): Array<NonNullable<T>>
-}
-
 export function arrayOf<T = any>(...items: T[]): Array<T> {
   return items
 }
@@ -277,4 +276,7 @@ export function arrayOf<T = any>(...items: T[]): Array<T> {
   injectElementAt(Array.prototype)
   injectFind(Array.prototype)
   injectFirst(Array.prototype)
+
+  // extras
+  injectFilterExtra(Array.prototype)
 })()

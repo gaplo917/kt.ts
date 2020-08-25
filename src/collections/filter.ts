@@ -27,17 +27,15 @@ export interface KtListFilterOp<T> {
 }
 
 export default <T extends any>(proto: Array<T>) => {
+  proto.filterIndexed = function (predicate: (index: number, value: T) => boolean): T[] {
+    return filter(this, (value, index) => predicate(index, value))
+  }
+
   proto.filterNot = function (predicate: (value: T) => boolean): T[] {
     return filter(this, value => !predicate(value))
   }
 
   proto.filterNotNull = function (): Array<NonNullable<T>> {
     return filter(this, value => value !== null && value !== undefined) as Array<NonNullable<T>>
-  }
-
-  proto.filterNotEmpty = function (): Array<NonNullable<T>> {
-    return filter(this, value => value !== null && value !== undefined && value !== '') as Array<
-      NonNullable<T>
-    >
   }
 }

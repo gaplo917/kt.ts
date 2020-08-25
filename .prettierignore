@@ -1,6 +1,7 @@
-.cache
+.idea
+.github
 package.json
 package-lock.json
-public
 node_modules
-src/generated/*
+dist
+coverage

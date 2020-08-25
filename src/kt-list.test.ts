@@ -1,19 +1,12 @@
 import './kt-list'
+import { arrayOf } from './kt-list'
 
-describe('map', () => {
-  const plusOne = (it: number) => it + 1
-  const appendA = (it: string) => it + 'a'
-  const numberToString = (it: number) => String(it)
-
-  test('number -> number', () => {
-    expect([1, 2, 3].map(plusOne)).toStrictEqual([2, 3, 4])
+describe('test the kt-list injection', () => {
+  test('arrayOf', () => {
+    expect(arrayOf(1, 2, 3)).toStrictEqual([1, 2, 3])
   })
 
-  test('string -> string', () => {
-    expect(['a', 'b', 'c'].map(appendA)).toStrictEqual(['aa', 'ba', 'ca'])
-  })
-
-  test('number -> string', () => {
-    expect([1, 2, 3].map(numberToString)).toStrictEqual(['1', '2', '3'])
+  test('prototype injection', () => {
+    // TODO: when all implementation is ready
   })
 })
