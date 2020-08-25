@@ -3,6 +3,7 @@ import injectFilter, { KtListFilterOp } from './collections/filter'
 import injectForEach, { KtListForEachOp } from './collections/forEach'
 import injectSize, { KtListSizeOp } from './collections/size'
 import injectContains, { KtListContainsOp } from './collections/contains'
+import injectElementAt, { KtListElementAtOp } from './collections/elementAt'
 
 declare global {
   interface Array<T> extends KtListOp<T>, TsListOp<T> {}
@@ -28,13 +29,8 @@ export interface KtListOp<T>
     KtListFilterOp<T>,
     KtListForEachOp<T>,
     KtListSizeOp,
-    KtListContainsOp<T> {
-  elementAt(index: number): T
-
-  elementAtOrElse(index: number, defaultValue: (index: number) => T): T
-
-  elementAtOrNull(index: number): T | null
-
+    KtListContainsOp<T>,
+    KtListElementAtOp<T> {
   find(predicate: (value: T) => boolean): T | null
 
   findLast(predicate: (value: T) => boolean): T | null
@@ -284,4 +280,5 @@ export function arrayOf<T = any>(...items: T[]): Array<T> {
   injectForEach(Array.prototype)
   injectSize(Array.prototype)
   injectContains(Array.prototype)
+  injectElementAt(Array.prototype)
 })()
