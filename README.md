@@ -10,6 +10,33 @@ Porting the Kotlin standard library design rationale to typescript. Boost the pr
 Pick the not-yet-implemented API(below list) and try to [create a GitHub issues with the feature template](https://github.com/gaplo917/kt.ts/issues/new?assignees=&labels=&template=implement-ktlist-features.md&title=%5BFeat%5D+Implement+Kt+List+). There is a full check-list for you to contribute this project :). 
 [Here is the example](https://github.com/gaplo917/kt.ts/issues/6).
 
+## Getting Started
+This module designed to be used in Typescript environment for utilizing strict 
+type-checking and IDE auto-complete experience that similar to Kotlin Development.
+
+If your want to use it in javascript project, I highly recommend you to use a relatively 
+[new VSCode feature @ts-check](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_type-checking-javascript) 
+Or [Intellij-based IDE](https://blog.jetbrains.com/webstorm/2019/09/using-typescript-to-check-your-javascript-code/) to enable type checking.
+
+```shell
+npm install kt.ts
+
+# OR
+
+yarn add kt.ts
+```
+
+
+```ts
+// node >= 11
+import 'kt.ts'
+
+const result = [1,2,[3,3]].flatMap(it => it).distinct()
+
+console.log(result)
+```
+
+
 ### Kotlin List API
 * [x] contains
 * [x] elementAt
