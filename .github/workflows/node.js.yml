@@ -27,8 +27,11 @@ jobs:
     - run: npm ci
     - run: npm run lint
     - run: npm run build --if-present
+    - run: npm test
     - name: Use Jest Coverage ${{ matrix.node-version }}
       uses: mattallty/jest-github-action@v1
       if: matrix.node-version == '12.x'
+      with:
+        test-command: "npm run test:coverage"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
