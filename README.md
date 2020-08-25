@@ -3,9 +3,9 @@ WIP
 
 ### Kotlin List API
 * [x] contains
-* [ ] elementAt
-* [ ] elementAtOrElse
-* [ ] elementAtOrNull
+* [x] elementAt
+* [x] elementAtOrElse
+* [x] elementAtOrNull
 * [x] ~~find~~
 * [ ] findLast
 * [ ] first
