@@ -1,4 +1,4 @@
-![kt.ts banner](https://cdn.jsdelivr.net/gh/gaplo917/kt.ts@master/meta/github-kt-ts-banner.jpg)
+![kt.ts banner](https://cdn.jsdelivr.net/gh/gaplo917/kt.ts@master/meta/github-kt-ts-banner@2x.jpg)
 
 # Kotlin Stdlib API in Typescript
 Porting the Kotlin standard library design rationale to typescript. Boost the productivity by using the wise API design. 
