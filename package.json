@@ -19,7 +19,7 @@
     "lint": "npm run lint:ts && npm run lint:prettier",
     "lint:ts": "eslint 'src/**/*.ts'",
     "lint:prettier": "prettier --config .prettierrc --check 'src/**/*.ts'",
-    "test": "jest"
+    "test": "jest --converage"
   },
   "keywords": [
     "kotlin",
