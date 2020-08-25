@@ -32,7 +32,7 @@ export default <T extends any>(proto: Array<T>) => {
       throw new Error('NoSuchElementError')
     }
     if (predicate) {
-      for (let e of this) {
+      for (const e of this) {
         if (predicate(e)) {
           return e
         }
@@ -44,7 +44,7 @@ export default <T extends any>(proto: Array<T>) => {
 
   proto.firstOrNull = function (predicate?: (value: T) => boolean): T | null {
     if (predicate) {
-      for (let e of this) {
+      for (const e of this) {
         if (predicate(e)) {
           return e
         }
