@@ -7,7 +7,7 @@ WIP
 * [x] elementAtOrElse
 * [x] elementAtOrNull
 * [x] ~~find~~
-* [ ] findLast
+* [x] findLast
 * [ ] first
 * [ ] first
 * [ ] firstOrNull
