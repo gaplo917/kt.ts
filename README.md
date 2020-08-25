@@ -3,9 +3,9 @@
 # Kotlin Stdlib API in Typescript
 Porting the Kotlin standard library design rationale to typescript. Boost the productivity by using the wise API design. 
 
-(WIP: This project is under active development. You are welcome to contribute your implementation.)
+***(WIP: This project is under active development. You are welcome to contribute.)***
 
-## Getting Started to Contribute
+# Getting Started to Contribute
 
 Pick the not-yet-implemented API(below list) and try to [create a GitHub issues with the feature template](https://github.com/gaplo917/kt.ts/issues/new?assignees=&labels=&template=implement-ktlist-features.md&title=%5BFeat%5D+Implement+Kt+List+). There is a full check-list for you to contribute this project :). 
 [Here is the example](https://github.com/gaplo917/kt.ts/issues/6).
