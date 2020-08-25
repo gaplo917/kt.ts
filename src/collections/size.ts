@@ -3,6 +3,9 @@ declare global {
 }
 
 export interface KtListSizeOp {
+  /**
+   * Returns the size of the collection.
+   */
   size: number
 }
 

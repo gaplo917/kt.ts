@@ -3,10 +3,19 @@ declare global {
 }
 
 export interface KtListElementAtOp<T> {
+  /**
+   * Returns an element at the given [index] or throws an [IndexOutOfBoundsError] if the [index] is out of bounds of this collection.
+   */
   elementAt(index: number): T
 
+  /**
+   * Returns an element at the given [index] or the result of calling the [defaultValue] function if the [index] is out of bounds of this collection.
+   */
   elementAtOrElse(index: number, defaultValue: (index: number) => T): T
 
+  /**
+   * Returns an element at the given [index] or `null` if the [index] is out of bounds of this collection
+   */
   elementAtOrNull(index: number): T | null
 }
 

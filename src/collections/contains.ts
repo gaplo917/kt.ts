@@ -5,8 +5,14 @@ declare global {
 }
 
 export interface KtListContainsOp<T> {
+  /**
+   * Checks if the specified element is contained in this collection.
+   */
   contains(element: T): boolean
 
+  /**
+   * Checks if all elements in the specified collection are contained in this collection.
+   */
   containsAll(elements: Array<T>): boolean
 }
 

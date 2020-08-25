@@ -8,10 +8,21 @@ export interface KtListFilterOp<T> {
   // Do not contaminate existing Array<T>
   // filter(predicate: (value: T) => boolean): T[]
 
+  /**
+   * Returns a list containing only elements matching the given [predicate].
+   * @param [predicate] function that takes the index of an element and the element itself
+   * and returns the result of predicate evaluation on the element.
+   */
   filterIndexed(predicate: (index: number, value: T) => boolean): T[]
 
+  /**
+   * Returns a list containing all elements not matching the given [predicate].
+   */
   filterNot(predicate: (value: T) => boolean): T[]
 
+  /**
+   * Returns a list containing all elements that are not `null`.
+   */
   filterNotNull(): Array<NonNullable<T>>
 }
 
