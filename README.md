@@ -5,12 +5,12 @@ Porting the Kotlin standard library design rationale to typescript. Boost the pr
 
 ***(WIP: This project is under active development. You are welcome to contribute.)***
 
-# Getting Started to Contribute
+### Getting Started to Contribute
 
 Pick the not-yet-implemented API(below list) and try to [create a GitHub issues with the feature template](https://github.com/gaplo917/kt.ts/issues/new?assignees=&labels=&template=implement-ktlist-features.md&title=%5BFeat%5D+Implement+Kt+List+). There is a full check-list for you to contribute this project :). 
 [Here is the example](https://github.com/gaplo917/kt.ts/issues/6).
 
-## Getting Started
+# Getting Started
 This module designed to be used in Typescript environment for utilizing strict 
 type-checking and IDE auto-complete experience that similar to Kotlin Development.
 
@@ -26,17 +26,29 @@ npm install kt.ts
 yarn add kt.ts
 ```
 
-
+### Typescript project
 ```ts
-// node >= 11
+// index.ts
 import 'kt.ts'
 
+// `flatMap` require { "lib": ["es2019"] } in tsconfig.json
 const result = [1,2,[3,3]].flatMap(it => it).distinct()
 
 console.log(result)
 ```
 
+### NodeJs CommonJS style
+```js
+// index.js
+require('kt.ts')
 
+// node >= 11.0 support `flatMap`
+const result = [1,2,[3,3]].flatMap(it => it).distinct()
+
+console.log(result)
+```
+
+# Project Status
 ### Kotlin List API
 * [x] contains
 * [x] elementAt
