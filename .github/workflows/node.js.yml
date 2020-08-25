@@ -30,7 +30,7 @@ jobs:
     - run: npm test
     - name: Use Jest Coverage ${{ matrix.node-version }}
       uses: mattallty/jest-github-action@v1
-      if: matrix.node-version == '12.x'
+      if: matrix.node-version == '12.x' && github.event_name == 'pull_request'
       with:
         test-command: "npm run test:coverage"
       env:
