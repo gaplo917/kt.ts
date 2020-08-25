@@ -1,5 +1,14 @@
+![kt.ts banner](https://cdn.jsdelivr.net/gh/gaplo917/kt.ts@master/meta/github-kt-ts-banner.jpg)
+
 # Kotlin Stdlib API in Typescript
-WIP
+Porting the Kotlin standard library design rationale to typescript. Boost the productivity by using the wise API design. 
+
+(WIP: This project is under active development. You are welcome to contribute your implementation.)
+
+## Getting Started to Contribute
+
+Pick the not-yet-implemented API(below list) and try to [create a GitHub issues with the feature template](https://github.com/gaplo917/kt.ts/issues/new?assignees=&labels=&template=implement-ktlist-features.md&title=%5BFeat%5D+Implement+Kt+List+). There is a full check-list for you to contribute this project :). 
+[Here is the example](https://github.com/gaplo917/kt.ts/issues/6).
 
 ### Kotlin List API
 * [x] contains
