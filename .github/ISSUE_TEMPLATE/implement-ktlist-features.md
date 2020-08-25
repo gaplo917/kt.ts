@@ -1,7 +1,7 @@
 ---
-name: Implement Kt Features
+name: Implement KtList Features
 about: Standard Kt features development template
-title: "[Feat] Implement Kt "
+title: "[Feat] Implement Kt List "
 labels: ''
 assignees: ''
 
