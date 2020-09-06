@@ -1,21 +1,25 @@
-import { findLast } from 'lodash'
+import { ktFind } from '../standalone/ktFind'
+import { ktFindLast } from '../standalone/ktFindLast'
 
 declare global {
   interface Array<T> extends KtListFindOp<T> {}
 }
 
 export interface KtListFindOp<T> {
-  // Do not contaminate existing Array<T>
-  // find(predicate: (value: T) => boolean): T | null
+  ktFind(predicate: (value: T) => boolean): T | null
 
   /**
    * Returns the last element matching the given [predicate], or `null` if no such element was found.
    */
-  findLast(predicate: (value: T) => boolean): T | null
+  ktFindLast(predicate: (value: T) => boolean): T | null
 }
 
 export default <T extends any>(proto: Array<T>) => {
-  proto.findLast = function (predicate: (value: T) => boolean): T | null {
-    return findLast(this, predicate) ?? null
+  proto.ktFind = function (predicate: (value: T) => boolean): T | null {
+    return ktFind(this, predicate)
+  }
+
+  proto.ktFindLast = function (predicate: (value: T) => boolean): T | null {
+    return ktFindLast(this, predicate)
   }
 }

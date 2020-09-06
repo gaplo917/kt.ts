@@ -1,41 +1,47 @@
-import { filter } from 'lodash'
+import { ktFilter } from '../standalone/ktFilter'
+import { ktFilterIndexed } from '../standalone/ktFilterIndexed'
+import { ktFilterNot } from '../standalone/ktFilterNot'
+import { ktFilterNotNull } from '../standalone/ktFilterNotNull'
 
 declare global {
   interface Array<T> extends KtListFilterOp<T> {}
 }
 
 export interface KtListFilterOp<T> {
-  // Do not contaminate existing Array<T>
-  // filter(predicate: (value: T) => boolean): T[]
+  ktFilter(predicate: (value: T) => boolean): T[]
 
   /**
    * Returns a list containing only elements matching the given [predicate].
    * @param [predicate] function that takes the index of an element and the element itself
    * and returns the result of predicate evaluation on the element.
    */
-  filterIndexed(predicate: (index: number, value: T) => boolean): T[]
+  ktFilterIndexed(predicate: (index: number, value: T) => boolean): T[]
 
   /**
    * Returns a list containing all elements not matching the given [predicate].
    */
-  filterNot(predicate: (value: T) => boolean): T[]
+  ktFilterNot(predicate: (value: T) => boolean): T[]
 
   /**
    * Returns a list containing all elements that are not `null`.
    */
-  filterNotNull(): Array<NonNullable<T>>
+  ktFilterNotNull(): Array<NonNullable<T>>
 }
 
 export default <T extends any>(proto: Array<T>) => {
-  proto.filterIndexed = function (predicate: (index: number, value: T) => boolean): T[] {
-    return filter(this, (value, index) => predicate(index, value))
+  proto.ktFilter = function (predicate: (value: T) => boolean): T[] {
+    return ktFilter(this, predicate)
   }
 
-  proto.filterNot = function (predicate: (value: T) => boolean): T[] {
-    return filter(this, value => !predicate(value))
+  proto.ktFilterIndexed = function (predicate: (index: number, value: T) => boolean): T[] {
+    return ktFilterIndexed(this, predicate)
   }
 
-  proto.filterNotNull = function (): Array<NonNullable<T>> {
-    return filter(this, value => value !== null && value !== undefined) as Array<NonNullable<T>>
+  proto.ktFilterNot = function (predicate: (value: T) => boolean): T[] {
+    return ktFilterNot(this, predicate)
+  }
+
+  proto.ktFilterNotNull = function (): Array<NonNullable<T>> {
+    return ktFilterNotNull(this)
   }
 }

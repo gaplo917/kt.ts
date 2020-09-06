@@ -9,11 +9,11 @@ describe('distinct', () => {
   ]
 
   test('distinct', () => {
-    expect([1, 1, 2, 2, 3].distinct()).toStrictEqual([1, 2, 3])
+    expect([1, 1, 2, 2, 3].ktDistinct()).toStrictEqual([1, 2, 3])
   })
 
   test('distinctBy', () => {
-    expect(users.distinctBy(value => value.name)).toStrictEqual([
+    expect(users.ktDistinctBy(value => value.name)).toStrictEqual([
       {
         id: 1,
         name: 'Peter',
@@ -24,6 +24,6 @@ describe('distinct', () => {
       },
     ])
 
-    expect(users.distinctBy(value => value.id)).toStrictEqual(users)
+    expect(users.ktDistinctBy(value => value.id)).toStrictEqual(users)
   })
 })

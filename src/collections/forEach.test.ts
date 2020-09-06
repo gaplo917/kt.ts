@@ -6,7 +6,7 @@ describe('forEach', () => {
   test('forEachIndexed', () => {
     const iterated: Array<{ index: number; value: any }> = []
     const arr = [1, 2, 3]
-    arr.forEachIndexed((value, index) => {
+    arr.ktForEachIndexed((index, value) => {
       iterated.push({
         value,
         index,

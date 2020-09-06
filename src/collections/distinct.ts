@@ -1,4 +1,5 @@
-import { uniq, uniqBy } from 'lodash'
+import { ktDistinctBy } from '../standalone/ktDistinctBy'
+import { ktDistinct } from '../standalone/ktDistinct'
 
 declare global {
   interface Array<T> extends KtListDistinctOp<T> {}
@@ -10,7 +11,7 @@ export interface KtListDistinctOp<T> {
    *
    * The elements in the resulting list are in the same order as they were in the source collection.
    */
-  distinct(): T[]
+  ktDistinct(): T[]
 
   /**
    * Returns a list containing only elements from the given collection
@@ -18,15 +19,15 @@ export interface KtListDistinctOp<T> {
    *
    * The elements in the resulting list are in the same order as they were in the source collection.
    */
-  distinctBy<K>(selector: (value: T) => K): T[]
+  ktDistinctBy<K>(selector: (value: T) => K): T[]
 }
 
 export default <T extends any>(proto: Array<T>) => {
-  proto.distinct = function (): T[] {
-    return uniq(this)
+  proto.ktDistinct = function (): T[] {
+    return ktDistinct<T>(this)
   }
 
-  proto.distinctBy = function <R>(selector: (value: T) => R) {
-    return uniqBy(this, selector)
+  proto.ktDistinctBy = function <K>(selector: (value: T) => K): T[] {
+    return ktDistinctBy<T, K>(this, selector)
   }
 }

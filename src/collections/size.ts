@@ -6,11 +6,11 @@ export interface KtListSizeOp {
   /**
    * Returns the size of the collection.
    */
-  size: number
+  ktSize: number
 }
 
 export default <T extends any>(proto: Array<T>) => {
-  Object.defineProperty(proto, 'size', {
+  Object.defineProperty(proto, 'ktSize', {
     get: function () {
       return this.length
     },

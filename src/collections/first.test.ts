@@ -9,56 +9,56 @@ describe('first', () => {
   ]
 
   test('first', () => {
-    expect([1, 1, 2, 2, 3].first()).toBe(1)
-    expect(['100', 2].first()).toBe('100')
-    expect(() => [].first()).toThrow(new Error('NoSuchElementError'))
+    expect([1, 1, 2, 2, 3].ktFirst()).toBe(1)
+    expect(['100', 2].ktFirst()).toBe('100')
+    expect(() => [].ktFirst()).toThrow(new Error('NoSuchElementError'))
   })
 
   test('first in empty array', () => {
-    expect(() => [].first()).toThrow(new Error('NoSuchElementError'))
+    expect(() => [].ktFirst()).toThrow(new Error('NoSuchElementError'))
   })
 
   test('first with predicate', () => {
-    expect(users.first()).toStrictEqual({
+    expect(users.ktFirst()).toStrictEqual({
       id: 1,
       name: 'Peter',
     })
 
-    expect(users.first(value => value.name === 'Mary')).toStrictEqual({
+    expect(users.ktFirst(value => value.name === 'Mary')).toStrictEqual({
       id: 2,
       name: 'Mary',
     })
   })
 
   test('firstOrNull with predicate not found', () => {
-    expect(() => users.first(value => value.name === 'Tony')).toThrow(
+    expect(() => users.ktFirst(value => value.name === 'Tony')).toThrow(
       new Error('NoSuchElementError'),
     )
   })
 
   test('firstOrNull', () => {
-    expect([1, 1, 2, 2, 3].first()).toBe(1)
-    expect(['100', 2].first()).toBe('100')
-    expect([].firstOrNull()).toBeNull()
+    expect([1, 1, 2, 2, 3].ktFirst()).toBe(1)
+    expect(['100', 2].ktFirst()).toBe('100')
+    expect([].ktFirstOrNull()).toBeNull()
   })
 
   test('firstOrNull in empty array', () => {
-    expect([].firstOrNull()).toBeNull()
+    expect([].ktFirstOrNull()).toBeNull()
   })
 
   test('firstOrNull with predicate', () => {
-    expect(users.firstOrNull()).toStrictEqual({
+    expect(users.ktFirstOrNull()).toStrictEqual({
       id: 1,
       name: 'Peter',
     })
 
-    expect(users.firstOrNull(value => value.name === 'Mary')).toStrictEqual({
+    expect(users.ktFirstOrNull(value => value.name === 'Mary')).toStrictEqual({
       id: 2,
       name: 'Mary',
     })
   })
 
   test('firstOrNull with predicate not found', () => {
-    expect(users.firstOrNull(value => value.name === 'Tony')).toBeNull()
+    expect(users.ktFirstOrNull(value => value.name === 'Tony')).toBeNull()
   })
 })

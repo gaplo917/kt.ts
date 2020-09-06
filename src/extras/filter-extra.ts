@@ -1,17 +1,15 @@
-import { filter } from 'lodash'
+import { ktFilterNotEmpty } from '../standalone/ktFilterNotEmpty'
 
 declare global {
   interface Array<T> extends TsListFilterOp<T> {}
 }
 
 export interface TsListFilterOp<T> {
-  filterNotEmpty(): Array<NonNullable<T>>
+  ktFilterNotEmpty(): Array<NonNullable<T>>
 }
 
-export default <T extends any>(proto: Array<T>) => {
-  proto.filterNotEmpty = function (): Array<NonNullable<T>> {
-    return filter(this, value => value !== null && value !== undefined && value !== '') as Array<
-      NonNullable<T>
-    >
+export default <T extends string>(proto: Array<T>) => {
+  proto.ktFilterNotEmpty = function (): Array<NonNullable<T>> {
+    return ktFilterNotEmpty(this)
   }
 }

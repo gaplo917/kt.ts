@@ -1,4 +1,5 @@
-import { includes, difference } from 'lodash'
+import { ktContains } from '../standalone/ktContains'
+import { ktContainsAll } from '../standalone/ktContainsAll'
 
 declare global {
   interface Array<T> extends KtListContainsOp<T> {}
@@ -7,22 +8,23 @@ declare global {
 export interface KtListContainsOp<T> {
   /**
    * Checks if the specified element is contained in this collection.
+   * This function use deep-equal(recursive equality algorithm) instead of SameValueZero
    */
-  contains(element: T): boolean
+  ktContains(element: T): boolean
 
   /**
    * Checks if all elements in the specified collection are contained in this collection.
+   * This function use deep-equal(recursive equality algorithm) instead of SameValueZero
    */
-  containsAll(elements: Array<T>): boolean
+  ktContainsAll(elements: Array<T>): boolean
 }
 
 export default <T extends any>(proto: Array<T>) => {
-  proto.contains = function (element: T): boolean {
-    return includes(this, element)
+  proto.ktContains = function (element: T): boolean {
+    return ktContains(this, element)
   }
 
-  // ref: https://github.com/lodash/lodash/issues/1743#issuecomment-170598139
-  proto.containsAll = function (elements: T[]): boolean {
-    return difference(elements, this).length === 0
+  proto.ktContainsAll = function (elements: T[]): boolean {
+    return ktContainsAll(this, elements)
   }
 }
